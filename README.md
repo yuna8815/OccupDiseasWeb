@@ -1,4 +1,4 @@
-# vuetify-template
+# Occupational Diseas Web
 
 ## Project setup
 ```
