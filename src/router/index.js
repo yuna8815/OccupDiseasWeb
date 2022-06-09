@@ -11,10 +11,9 @@ const routes = [
     redirect: "/auth/login",
     children: [
       {
-          path: "/auth/login",
-          name: "Login",
-          component: () =>
-              import ("@/views/Auth/Login.vue")
+        path: "/auth/login",
+        name: "Login",
+        component: () => import ("@/views/Auth/Login.vue")
       },
     ]
   },
