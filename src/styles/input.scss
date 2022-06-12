@@ -19,3 +19,14 @@
 .theme--light.v-input textarea::placeholder {
   color: var(--v-text-lighten1) !important;
 }
+
+.v-form .v-subheader {
+  height: auto;
+  padding: 0;
+  margin-bottom: 8px;
+  color: var(--v-text-base);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: .1px;
+}

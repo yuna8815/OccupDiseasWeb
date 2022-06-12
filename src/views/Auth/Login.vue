@@ -47,29 +47,49 @@
             depressed
             rounded
             color="primary"
-            class="my-4">
+            class="my-4"
+            @click="doLogin">
             로그인
           </v-btn>
           <v-btn
             text
-            color="primary">
+            color="primary"
+            to="/auth/signup">
             <u>가입하고 시작하세요</u>
             <arrow-right-icon size="16" class="ml-2"></arrow-right-icon>
           </v-btn>
         </div>
       </v-col>
     </v-row>
+
+    <AlertModal :params="alertModalParams"></AlertModal>
   </v-container>
 </template>
 
 <script>
 import { ArrowRightIcon, AlertTriangleIcon } from 'vue-feather-icons'
 
+import AlertModal from '@/components/modal/AlertModal'
+
 export default {
   name: 'LoginPage',
   components: {
     ArrowRightIcon,
-    AlertTriangleIcon
+    AlertTriangleIcon,
+    AlertModal
+  },
+  data() {
+    return {
+      alertModalParams: { isOpened: false, title: '', message: ''},
+    }
+  },
+  methods: {
+    showAlert() {
+      this.alertModalParams = { isOpened: true, title: '승인 대기', message: '계정이 승인 대기상태입니다.\r\n담당 관리자에 승인 요청해 주세요.'};
+    },
+    doLogin() {
+      this.showAlert();
+    }
   }
 }
 </script>
