@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <h1>Outbox</h1>
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <h1>Inbox</h1>
 </template>

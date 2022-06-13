@@ -11,13 +11,46 @@ const routes = [
     redirect: "/auth/login",
     children: [
       {
-          path: "/auth/login",
-          name: "Login",
-          component: () =>
-              import ("@/views/Auth/Login.vue")
+        path: "/auth/login",
+        name: "Login",
+        component: () => import ("@/views/Auth/Login.vue")
+      },
+      {
+        path: "/auth/signup",
+        name: "Signup",
+        component: () => import ("@/views/Auth/Signup.vue")
       },
     ]
   },
+  {
+    path: '/form',
+    name: 'Form',
+    component: require("@/layout/DefaultLayout.vue").default,
+    children: [
+      {
+        path: '/form/inbox',
+        name: 'Inbox',
+        component: () => import('@/views/Form/InboxList.vue')
+      },
+      {
+        path: '/form/outbox',
+        name: 'Outbox',
+        component: () => import('@/views/Form/OutboxList.vue')
+      }
+    ]
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: require("@/layout/DefaultLayout.vue").default,
+    children: [
+      {
+        path: '/settings/center-list',
+        name: 'CenterList',
+        component: () => import('@/views/Settings/CenterList.vue')
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
