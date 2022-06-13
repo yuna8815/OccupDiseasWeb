@@ -89,6 +89,7 @@ export default {
     },
     doLogin() {
       this.showAlert();
+      this.$router.replace('/form/inbox')
     }
   }
 }

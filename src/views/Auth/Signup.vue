@@ -83,7 +83,7 @@
                 v-model="joinValid">
                 <v-row>
                   <v-col cols="12">
-                    <div class="d-flex align-end">
+                    <div class="d-flex align-sm-end flex-column flex-sm-row">
                       <div class="flex-grow-1 mr-4">
                         <v-subheader>아이디</v-subheader>
                         <v-text-field
@@ -97,6 +97,7 @@
                         outlined
                         rounded
                         color="primary"
+                        class="mt-6 mt-sm-0"
                         @click="doIdCheck"
                       >
                         중복 확인
@@ -179,11 +180,11 @@
               outlined
               rounded
               color="primary"
-              class="mr-4"
-              @click="el = 1"
-            >
+              @click="e1 = 1"
+              class="mr-4">
               이전으로
             </v-btn>
+
             <v-btn
               depressed
               rounded
@@ -282,7 +283,7 @@
               rounded
               :disabled="!orgValid"
               color="primary"
-              to="/auth/login">
+              @click="doSubmit">
               회원가입 완료
             </v-btn>
           </div>
@@ -324,8 +325,8 @@ export default {
     }
   },
   methods: {
-    showAlert(msg) {
-      this.alertModalParams = { isOpened: true, title: '중복 확인', message: msg};
+    showAlert(tit, msg) {
+      this.alertModalParams = { isOpened: true, title: tit, message: msg};
     },
     doIdCheck() {
       let _msg = '';
@@ -333,7 +334,11 @@ export default {
       if(this.isIdChecked) _msg = '해당 아이디는 사용 불가능합니다.';
       else _msg = '해당 아이디는 사용 가능합니다.';
 
-      this.showAlert(_msg);
+      this.showAlert('중복 확인', _msg);
+    },
+    doSubmit() {
+      this.$router.replace('/auth/login')
+      // this.showAlert('회원가입 완료', '로그인하여 관리자페이지를 시작해보세요!');
     }
   }
 }

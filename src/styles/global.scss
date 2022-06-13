@@ -1,2 +1,8 @@
 @import "@/styles/input.scss";
 @import "@/styles/button.scss";
+
+.v-menu__content {
+  border-radius: 6px !important;
+  box-shadow: 0px 4px 6px 0px #0000001A,
+              0px 2px 4px 0px #0000000F !important;
+}

@@ -1,5 +1,8 @@
 <template>
-  <v-dialog v-model="$props.params.isOpened" max-width="400">
+  <v-dialog
+    v-model="$props.params.isOpened"
+    max-width="400"
+    :scrollable="true">
     <v-card>
       <v-card-title class="pa-4 text-body-2">
         <v-text-field
@@ -86,4 +89,9 @@ export default {
     right: 0;
   }
 }
+// .v-card__text {
+//   // (디바이스 height) - (dialog mt, mb 24px) - (card title, card action 80px)
+//   height: calc(100vh - 24px * 2 - 80px * 2 - 16px);
+//   overflow-y: scroll;
+// }
 </style>

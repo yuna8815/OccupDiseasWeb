@@ -273,3 +273,9 @@ $card-text-font-size: map-get($headings, 'body-2', 'size');
 $card-text-font-weight: map-get($headings, 'body-2', 'size');
 $card-text-letter-spacing: map-get($headings, 'body-2', 'letter-spacing');
 $card-text-line-height: map-get($headings, 'body-2', 'line-height');
+
+$list-item-min-height: 45px;
+$list-item-title-font-size: map-get($headings, 'body-2', 'size');
+$list-padding: 16px;
+$list-item-padding: 0 8px;
+$list-item-icon-margin: 12px 0;
