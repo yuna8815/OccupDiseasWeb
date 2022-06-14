@@ -36,19 +36,8 @@
     </v-tabs>
     
     <v-spacer />
-    <v-sheet class="d-flex align-center flex-shrink-0">
-      <v-avatar
-        color="primary lighten-1"
-        size="40"
-        class="pa-2 mr-2">
-        <user-icon class="white--text"></user-icon>
-      </v-avatar>
+    <UserAvatar />
 
-      <div class="flex-shrink-0">
-        <p class="ma-0 text-subtitle-1">홍길동</p>
-        <p class="ma-0 text-body-2 text--text text--lighten-1">안심센터 관리자</p>
-      </div>
-    </v-sheet>
     <v-btn
       depressed
       rounded
@@ -61,12 +50,13 @@
 </template>
 
 <script>
-import { UserIcon, ChevronRightIcon } from 'vue-feather-icons'
+import { ChevronRightIcon } from 'vue-feather-icons'
+import UserAvatar from '@/components/widget/UserAvatar'
 
 export default {
   components: {
-    UserIcon,
-    ChevronRightIcon
+    ChevronRightIcon,
+    UserAvatar
   },
   data() {
     return {
