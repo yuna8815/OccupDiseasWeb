@@ -238,6 +238,8 @@ $headings: (
   )
 );
 
+$toolbar-content-padding-x: 0;
+
 $btn-icon-font-size: 16px;
 $btn-letter-spacing: 1.25px;
 $btn-sizes: (
@@ -253,6 +255,13 @@ $btn-font-sizes: (
   'default': 14px,
   'large': .875rem,
   'x-large': 1rem
+);
+$fab-sizes: (
+  'x-small': 20,
+  'small': 28,
+  'default': 48,
+  'large': 44,
+  'x-large': 52
 );
 
 $text-field-line-height: 24px;
@@ -280,3 +289,18 @@ $list-padding: 16px;
 $list-item-padding: 0 8px;
 $list-item-icon-margin: 12px 0;
 $list-group-no-action-item-padding: 56px;
+
+$data-table-border-radius: 0;
+$data-table-regular-header-height: 60px;
+$data-table-regular-row-height: 65px;
+$data-table-regular-header-font-size: map-get($headings, 'subtitle-2', 'size');
+$data-table-regular-row-font-size: map-get($headings, 'body-2', 'size');
+
+$chip-padding: 0 8px;
+
+$tooltip-background-color: #F9FAFB;
+$tooltip-text-color: #202020;
+$tooltip-opacity: 1;
+$tooltip-border-radius: 8px;
+$tooltip-font-size: 12px;
+$tooltip-padding: 16px;

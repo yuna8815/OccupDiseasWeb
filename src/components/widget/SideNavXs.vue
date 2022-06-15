@@ -54,6 +54,7 @@
                 v-for="(item, i) in items"
                 :key="i"
                 link
+                :to="item.router"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
@@ -91,9 +92,9 @@ export default {
   data() {
     return {
       items: [
-        { title: '직업병 안심센터 관리' },
-        { title: '협력병원 관리' },
-        { title: '의료진 관리' },
+        { title: '직업병 안심센터 관리', router: '/settings/center-list' },
+        { title: '협력병원 관리', router: '/settings/center-list' },
+        { title: '의료진 관리', router: '/settings/center-list' },
       ],
     }
   }

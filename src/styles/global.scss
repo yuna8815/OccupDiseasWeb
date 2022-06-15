@@ -1,13 +1,32 @@
 @import "@/styles/input.scss";
+@import "@/styles/table.scss";
 @import "@/styles/button.scss";
+@import "@/styles/tooltip.scss";
 
 .v-menu__content {
   border-radius: 6px !important;
   box-shadow: 0px 4px 6px 0px #0000001A,
               0px 2px 4px 0px #0000000F !important;
+
+  .v-list-item + .v-list-item {
+    border-top: solid 1px var(--v-gray-darken2)
+  }
 }
 
 .v-list-group__header {
   height: 48px !important;
   padding: 0 !important;
+}
+
+.v-chip.v-size--default {
+  height: 28px !important;
+  font-size: 12px !important;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.4000000059604645px;
+}
+
+.v-snack__content {
+  display: flex;
+  align-items: center;
 }

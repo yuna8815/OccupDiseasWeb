@@ -36,6 +36,11 @@ const routes = [
         path: '/form/outbox',
         name: 'Outbox',
         component: () => import('@/views/Form/OutboxList.vue')
+      },
+      {
+        path: '/form/request',
+        name: 'RequestForm',
+        component: () => import('@/views/Form/RequestForm.vue')
       }
     ]
   },
