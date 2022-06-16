@@ -38,9 +38,19 @@ const routes = [
         component: () => import('@/views/Form/OutboxList.vue')
       },
       {
-        path: '/form/request',
+        path: '/form/request/:id',
         name: 'RequestForm',
         component: () => import('@/views/Form/RequestForm.vue')
+      },
+      {
+        path: '/form/assessment/:id',
+        name: 'AssessmentForm',
+        component: () => import('@/views/Form/AssessmentForm.vue')
+      },
+      {
+        path: '/form/monitoring/:id',
+        name: 'MonitoringForm',
+        component: () => import('@/views/Form/MonitoringForm.vue')
       }
     ]
   },

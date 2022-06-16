@@ -1,7 +1,7 @@
 <template>
   <v-container class="py-8">
-    <div class="d-sm-flex justify-space-between pb-8">
-      <h1 class="text-h5 mb-4">의뢰된 서식 목록</h1>
+    <div class="d-sm-flex justify-space-between align-center pb-8">
+      <h1 class="text-h5 mb-4 mb-sm-0">의뢰된 서식 목록</h1>
       
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
@@ -50,12 +50,12 @@
           <span>열람일자 : 2022-01-01 13:05</span>
         </v-tooltip>
       </template>
-      <template v-slot:[`item.ROWS_MENU`]>
+      <template v-slot:[`item.ROWS_MENU`]="{ item }">
         <v-btn
           icon
           small
           class="mx-2 text--text text--lighten-1"
-          @click="doEdit">
+          @click="doEdit(item.router, item.id)">
           <edit-2-icon size="20"></edit-2-icon>
         </v-btn>
         <v-btn
@@ -125,30 +125,34 @@ export default {
           DATE: '2022-01-01',
           REQUEST_NAME: '홍길동 (서울대학교병원)',
           STATE: '열람',
+          router: '/form/request'
         },
         {
           id: 1,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 의심 사례 협진 의뢰',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           REQUEST_NAME: '홍길동 (서울대학교병원)',
           STATE: '대기',
+          router: '/form/request'
         },
         {
           id: 2,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 의심 사례 협진 의뢰',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           REQUEST_NAME: '홍길동 (서울대학교병원)',
           STATE: '열람',
+          router: '/form/request'
         },
         {
           id: 3,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 의심 사례 협진 의뢰',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           REQUEST_NAME: '홍길동 (서울대학교병원)',
           STATE: '열람',
+          router: '/form/request'
         },
       ]
     }
@@ -160,7 +164,8 @@ export default {
     showSnackbar(msg) {
       this.snackbarParams = { isOpened: true, message: msg }
     },
-    doEdit() {
+    doEdit(router, id) {
+      this.$router.push(router + '/' + id)
       console.log('페이지 이동')
     },
     doDownload() {

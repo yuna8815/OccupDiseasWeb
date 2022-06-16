@@ -3,12 +3,7 @@
     <v-row>
       <v-col class="white"> 
         <div class="d-flex align-center justify-center mb-4">
-          <v-skeleton-loader
-            width="64"
-            height="64"
-            type="image"
-            class="mr-4"
-          ></v-skeleton-loader>
+          <Logo width="64" height="64" class="mr-4" />
           <h1 class="text-h4">직업병 안심센터</h1>
         </div>
 
@@ -69,6 +64,7 @@
 <script>
 import { ArrowRightIcon, AlertTriangleIcon } from 'vue-feather-icons'
 
+import Logo from '@/components/widget/Logo'
 import AlertModal from '@/components/modal/AlertModal'
 
 export default {
@@ -76,6 +72,7 @@ export default {
   components: {
     ArrowRightIcon,
     AlertTriangleIcon,
+    Logo,
     AlertModal
   },
   data() {

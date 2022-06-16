@@ -152,7 +152,8 @@
                       outlined
                       :rules="[v => !!v]"
                       required
-                      hide-details="auto" />
+                      hide-details="auto"
+                      v-mask="'###-####-####'" />
                   </v-col>
                   <v-col cols="12">
                     <v-subheader>이메일주소</v-subheader>
@@ -313,7 +314,7 @@ export default {
       alertModalParams: { isOpened: false, title: '', message: ''},
       orgModalParams: { isOpened: false },
 
-      e1: 3,
+      e1: 1,
       isTerm: false,
 
       joinValid: true,

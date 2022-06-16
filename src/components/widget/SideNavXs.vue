@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     v-model="$props.params.isDrawer"
-    absolute
+    app
     temporary
     class="pa-4">
     <div class="d-flex fill-height flex-column align-center justify-space-between">

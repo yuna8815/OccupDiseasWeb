@@ -1,7 +1,7 @@
 <template>
   <v-container class="py-8">
-    <div class="d-sm-flex justify-space-between pb-8">
-      <h1 class="text-h5 mb-4">내가 작성한 서식 목록</h1>
+    <div class="d-sm-flex justify-space-between align-center pb-8">
+      <h1 class="text-h5 mb-4 mb-sm-0">내가 작성한 서식 목록</h1>
       
       <div class="d-flex d-sm-block justify-end">
         <v-menu offset-y>
@@ -77,6 +77,28 @@
       checkbox-color="primary"
       no-data-text="“새로 작성하기”를 클릭하여 서식을 작성해 주세요"
       :footer-props="footerProps">
+      <template v-slot:[`header.STATE`]="{ header }">
+        {{ header.text }}
+
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <help-circle-icon 
+              v-bind="attrs"
+              v-on="on"
+              size="20"
+              class="ml-2 mb-n1 text--text text--lighten-1"/>
+          </template>
+
+          <div class="text-body-2">
+            작성 완료 : 서식 작성만 해놓은 상태<br>
+            서명 요청 : 전공의가 전문의에 서명 요청<br>
+            서명 완료 : 전문의 서명 완료<br>
+            서식 공유 : 전문의 서명 후 안심센터에 서식 전달<br>
+            공유 취소 : 안심센터에 전달된 서식 회수<br>
+            서식 열람 : 안심센터 의료진이 공유된 서식을 열람
+          </div>
+        </v-tooltip>
+      </template>
       <template v-slot:[`item.STATE`]="{ item }">
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
@@ -91,7 +113,7 @@
           <span>공유일자 : 2022-01-01 13:05</span>
         </v-tooltip>
       </template>
-      <template v-slot:[`item.ROWS_MENU`]>
+      <template v-slot:[`item.ROWS_MENU`]="{ item }">
         <v-btn
           icon
           small
@@ -103,7 +125,7 @@
           icon
           small
           class="mx-2 text--text text--lighten-1"
-          @click="doEdit">
+          @click="doEdit(item.router, item.id)">
           <edit-2-icon size="20"></edit-2-icon>
         </v-btn>
         <v-btn
@@ -116,14 +138,14 @@
       </template>
     </v-data-table>
 
-    <div class="text-body-2 mt-8">
+    <!-- <div class="text-body-2 mt-8">
       &#8226; 작성 완료 : 서식 작성만 해놓은 상태<br>
       &#8226; 서명 요청 : 전공의가 전문의에 서명 요청<br>
       &#8226; 서명 완료 : 전문의 서명 완료<br>
       &#8226; 서식 공유 : 전문의 서명 후 안심센터에 서식 전달<br>
       &#8226; 공유 취소 : 안심센터에 전달된 서식 회수<br>
       &#8226; 서식 열람 : 안심센터 의료진이 공유된 서식을 열람
-    </div>
+    </div> -->
 
     <ConfirmModal :params="confirmModalParams" />
 
@@ -138,7 +160,7 @@
 </template>
 
 <script>
-import { TrashIcon, Edit2Icon, DownloadIcon, ChevronRightIcon, MoreHorizontalIcon, CheckCircleIcon } from 'vue-feather-icons'
+import { TrashIcon, Edit2Icon, DownloadIcon, ChevronRightIcon, MoreHorizontalIcon, CheckCircleIcon, HelpCircleIcon } from 'vue-feather-icons'
 
 import ConfirmModal from '@/components/modal/ConfirmModal'
 
@@ -150,6 +172,7 @@ export default {
     ChevronRightIcon,
     MoreHorizontalIcon,
     CheckCircleIcon,
+    HelpCircleIcon,
     ConfirmModal
   },
   data() {
@@ -164,9 +187,9 @@ export default {
       },
 
       newMenus: [
-        { title: '직업병 의심 사례 협진 의뢰', router: '/form/request' },
-        { title: '직업병 질병 업무관련성 평가서', router: '/form/request' },
-        { title: '직업병 질병 모니터링 조사항목', router: '/form/request' },
+        { title: '직업병 의심 사례 협진 의뢰', router: '/form/request/-1' },
+        { title: '직업병 질병 업무관련성 평가서', router: '/form/assessment/-1' },
+        { title: '직업병 질병 모니터링 조사항목', router: '/form/monitoring/-1' },
       ],
       statusMenus: [
         { title: '선택한 서식 서명 요청' },
@@ -188,41 +211,47 @@ export default {
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           STATE: '서명 요청',
+          router: '/form/request'
         },
         {
           id: 1,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 질병 업무관련성 평가서',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           STATE: '작성 완료',
+          router: '/form/assessment'
         },
         {
           id: 2,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 질병 업무관련성 평가서',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           STATE: '작성 완료',
+          router: '/form/assessment'
         },
         {
           id: 3,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 질병 모니터링 조사항목',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           STATE: '작성 완료',
+          router: '/form/monitoring'
         },
         {
           id: 4,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 질병 업무관련성 평가서',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           STATE: '작성 완료',
+          router: '/form/assessment'
         },
         {
           id: 6,
-          FILE_NAME: '직업병 의심 사례 단순 보고',
+          FILE_NAME: '직업병 질병 업무관련성 평가서',
           PATIENT_NAME: '김환자 (여/33세)',
           DATE: '2022-01-01',
           STATE: '작성 완료',
+          router: '/form/assessment'
         }
       ]
     }
@@ -240,8 +269,8 @@ export default {
     doDelete() {
       this.showConfirm('삭제', '목록을 삭제하시겠습니까?', null);
     },
-    doEdit() {
-      console.log('페이지 이동')
+    doEdit(router, id) {
+      this.$router.push(router + '/' + id)
     },
     doDownload() {
       console.log('파일 다운로드')
