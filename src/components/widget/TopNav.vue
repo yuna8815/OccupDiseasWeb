@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     app
-    flat
+    elevate-on-scroll
     height="80"
     color="white"
   >

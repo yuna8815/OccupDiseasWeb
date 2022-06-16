@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     app
-    flat
+    elevate-on-scroll
     color="white">
     <v-container class="d-flex align-center">
       <Logo width="40" height="40" />
