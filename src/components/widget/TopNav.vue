@@ -7,6 +7,7 @@
   >
     <v-container class="d-flex align-center py-0">
       <v-tabs
+        optional
         height="34"
         class="py-4">
         <v-tab to="/form/inbox">작성 목록</v-tab>
@@ -16,6 +17,7 @@
           class="rounded-2">
           <template v-slot:activator="{ on, attrs }">
             <v-tab
+              append-path
               v-bind="attrs"
               v-on="on">
               등록 관리
@@ -72,7 +74,22 @@ export default {
   methods: {
     doLogout() {
       this.$router.replace('/')
+    },
+    stopLink(ev) {
+      // ev.defaultPrevented();
+      console.log(ev)
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.v-btn {
+  border-bottom: solid 2px transparent;
+  
+  &--active {
+    border-color: var(--v-primary-base);
+  }
+}
+
+</style>

@@ -65,6 +65,18 @@ const routes = [
         component: () => import('@/views/Settings/CenterList.vue')
       }
     ]
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: require("@/layout/DefaultLayout.vue").default,
+    children: [
+      {
+        path: '',
+        name: 'MyAccount',
+        component: () => import('@/views/User/MyAccount.vue')
+      }
+    ]
   }
 ]
 

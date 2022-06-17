@@ -9,7 +9,8 @@
           outlined
           rounded
           color="primary"
-          class="mr-4">
+          class="mr-4"
+          @click="doSave">
           <save-icon v-if="$vuetify.breakpoint.xs" size="20"></save-icon>
           <span v-else>임시 저장</span>
         </v-btn>
@@ -395,6 +396,8 @@
 
     <QrcodeModal :params="qrcodeModalParams" />
     <UserListModal :params="$data" />
+    <ConfirmModal :params="confirmModalParams" />
+    <AlertModal :params="alertModalParams" />
   </v-container>
 </template>
 
@@ -403,6 +406,8 @@ import { DownloadIcon, SaveIcon } from 'vue-feather-icons'
 import { VueDaumPostcode } from "vue-daum-postcode"
 import QrcodeModal from "@/components/modal/QrcodeModal"
 import UserListModal from "@/components/modal/UserListModal"
+import ConfirmModal from '@/components/modal/ConfirmModal'
+import AlertModal from '@/components/modal/AlertModal'
 
 export default {
   components: {
@@ -410,13 +415,17 @@ export default {
     SaveIcon,
     VueDaumPostcode,
     QrcodeModal,
-    UserListModal
+    UserListModal,
+    ConfirmModal,
+    AlertModal
   },
   data() {
     return {
       isPostcodeOpen: false,
       isUserListOpen: false,
       qrcodeModalParams: { isOpened: false },
+      confirmModalParams: { isOpened: false, title: '', message: '', callback: null},
+      alertModalParams: { isOpened: false, title: '', message: ''},
 
       isValid: true,
       diagnosticGroup: ['임상적 추정', '최종 진단'],
@@ -441,6 +450,12 @@ export default {
     // }
   },
   methods: {
+    showConfirm(tit, msg, callback) {
+      this.confirmModalParams = { isOpened: true, title: tit, message: msg, callback: callback};
+    },
+    showAlert(tit, msg) {
+      this.alertModalParams = { isOpened: true, title: tit, message: msg};
+    },
     onComplete(e) {
 			console.log(e);
 			this.isPostcodeOpen = false;
@@ -462,6 +477,16 @@ export default {
     },
     doCancel() {
       this.$router.back()
+    },
+    doSave() {
+      const _temp = false;
+
+      if(_temp) {
+        this.showConfirm('임시 저장하기', '이미 임시 저장된 내용이 있습니다.\r\n해당 내용으로 덮어씌우시겠습니까?', null);
+      }
+      else {
+        this.showAlert('임시 저장', '작성한 내용이 임시 저장되었습니다.')
+      }
     }
   }
 }

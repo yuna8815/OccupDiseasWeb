@@ -1,5 +1,7 @@
 <template>
-  <v-sheet class="d-flex align-center flex-shrink-0">
+  <v-sheet
+    class="d-flex align-center flex-shrink-0"
+    @click="goPage">
     <v-avatar
       color="primary lighten-1"
       size="40"
@@ -21,6 +23,17 @@ export default {
   name: 'UserAvatar',
   components: {
     UserIcon
+  },
+  methods: {
+    goPage() {
+      this.$router.push('/account')
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.v-sheet {
+  cursor: pointer;
+}
+</style>

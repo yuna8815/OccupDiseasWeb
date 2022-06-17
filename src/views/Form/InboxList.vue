@@ -21,7 +21,7 @@
             <v-list-item
               v-for="(menu, index) in newMenus"
               :key="index"
-              :to="menu.router"
+              @click="goPage(menu.router)"
             >
               <v-list-item-title>{{ menu.title }}</v-list-item-title>
               <v-list-item-icon>
@@ -274,6 +274,17 @@ export default {
     },
     doDownload() {
       console.log('파일 다운로드')
+    },
+    goPage(router) {
+      // 임시 저장된 데이터가 있을 경우
+      const _temp = false;
+
+      if(_temp) {
+        this.showConfirm('임시 저장 불러오기', '임시 저장된 내용이 있습니다.\r\n이어서 작성하시겠습니까?', null)
+        return;
+      }
+
+      this.$router.push(router)
     }
   }
 }

@@ -9,7 +9,8 @@
           outlined
           rounded
           color="primary"
-          class="mr-4">
+          class="mr-4"
+          @click="doSave">
           <save-icon v-if="$vuetify.breakpoint.xs" size="20"></save-icon>
           <span v-else>임시 저장</span>
         </v-btn>
@@ -122,6 +123,7 @@
               hide-details />
           </v-col>
           <v-col cols="12"><v-divider /></v-col>
+          <v-col cols="12" class="text-h6">진단</v-col>
           <v-col cols="12" sm="6">
             <v-subheader>
               임상 진단명
@@ -168,6 +170,7 @@
               hide-details />
           </v-col>
           <v-col cols="12"><v-divider /></v-col>
+          <v-col cols="12" class="text-h6">보고</v-col>
           <v-col cols="12" sm="4">
             <v-subheader>
               보고일
@@ -355,10 +358,16 @@
       &#8226; 최종진단명: 직업력과 병력, 유해인자를 고려한 최종 진단명을 기재한다. (한국표준질병사인분류코드 이용)<br>
       &#8226; 업무관련성: 확실(Definite), 가능성 높음(Probable), 가능성 있음(Possible), 가능성 낮음(Unlikely) 등으로 구분한다.<br>
     </div> -->
+
+    <ConfirmModal :params="confirmModalParams" />
+    <AlertModal :params="alertModalParams" />
   </v-container>
 </template>
 
 <script>
+import ConfirmModal from '@/components/modal/ConfirmModal'
+import AlertModal from '@/components/modal/AlertModal'
+
 import { SaveIcon, DownloadIcon, ChevronUpIcon, ChevronDownIcon, HelpCircleIcon } from 'vue-feather-icons'
 
 export default {
@@ -367,10 +376,15 @@ export default {
     DownloadIcon,
     ChevronUpIcon,
     ChevronDownIcon,
-    HelpCircleIcon
+    HelpCircleIcon,
+    ConfirmModal,
+    AlertModal
   },
   data() {
     return {
+      confirmModalParams: { isOpened: false, title: '', message: '', callback: null},
+      alertModalParams: { isOpened: false, title: '', message: ''},
+      
       isValid: true,
 
       lists: [
@@ -379,6 +393,12 @@ export default {
     }
   },
   methods: {
+    showConfirm(tit, msg, callback) {
+      this.confirmModalParams = { isOpened: true, title: tit, message: msg, callback: callback};
+    },
+    showAlert(tit, msg) {
+      this.alertModalParams = { isOpened: true, title: tit, message: msg};
+    },
     doToggle(index) {
       this.lists[index].isExpand = !this.lists[index].isExpand;
     },
@@ -390,6 +410,16 @@ export default {
     },
     doValidate() {
       this.$refs.form.validate()
+    },
+    doSave() {
+      const _temp = false;
+
+      if(_temp) {
+        this.showConfirm('임시 저장하기', '이미 임시 저장된 내용이 있습니다.\r\n해당 내용으로 덮어씌우시겠습니까?', null);
+      }
+      else {
+        this.showAlert('임시 저장', '작성한 내용이 임시 저장되었습니다.')
+      }
     }
   }
 }
