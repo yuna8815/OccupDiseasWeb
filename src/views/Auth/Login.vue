@@ -3,7 +3,7 @@
     <v-row>
       <v-col class="white"> 
         <div class="d-flex align-center justify-center mb-4">
-          <Logo width="64" height="64" class="mr-4" />
+          <Logo :width="64" :height="64" class="mr-4" />
           <h1 class="text-h4">직업병 안심센터</h1>
         </div>
 

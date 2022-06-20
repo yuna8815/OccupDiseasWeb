@@ -6,11 +6,11 @@
       class="white pa-4">
       <v-row>
         <v-col cols="12">
-          <v-subheader>현재 비말번호</v-subheader>
+          <v-subheader>현재 비밀번호</v-subheader>
           <v-text-field
             outlined
             require
-            placeholder="현재 비말번호"
+            placeholder="현재 비밀번호"
             :rules="[v => !!v]"
             hide-details />
         </v-col>

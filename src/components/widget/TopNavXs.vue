@@ -4,7 +4,7 @@
     elevate-on-scroll
     color="white">
     <v-container class="d-flex align-center">
-      <Logo width="40" height="40" />
+      <Logo :width="40" :height="40" />
       <v-spacer />
       <v-app-bar-nav-icon @click.stop="$props.params.isDrawer = !$props.params.isDrawer"></v-app-bar-nav-icon>
     </v-container>

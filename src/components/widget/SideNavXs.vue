@@ -41,7 +41,7 @@
               :value="true"
               no-action>
               <template v-slot:activator>
-                <v-list-item class="px-4">
+                <v-list-item class="px-4 mb-0">
                   <v-list-item-icon class="mr-4"><settings-icon size="24"></settings-icon></v-list-item-icon>
 
                   <v-list-item-content>

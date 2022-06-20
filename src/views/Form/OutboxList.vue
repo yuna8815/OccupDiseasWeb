@@ -3,29 +3,31 @@
     <div class="d-sm-flex justify-space-between align-center pb-8">
       <h1 class="text-h5 mb-4 mb-sm-0">의뢰된 서식 목록</h1>
       
-      <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            :fab="$vuetify.breakpoint.xs"
-            :disabled="selectedRows.length < 1"
-            depressed
-            rounded
-            color="primary"
-            v-bind="attrs"
-            v-on="on">
-            <span v-if="!$vuetify.breakpoint.xs">상태 변경</span>
-            <more-horizontal-icon v-else size="20"></more-horizontal-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item
-            v-for="(menu, index) in statusMenus"
-            :key="index"
-          >
-            <v-list-item-title>{{ menu.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+      <div class="d-flex d-sm-block justify-end">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              :fab="$vuetify.breakpoint.xs"
+              :disabled="selectedRows.length < 1"
+              depressed
+              rounded
+              color="primary"
+              v-bind="attrs"
+              v-on="on">
+              <span v-if="!$vuetify.breakpoint.xs">상태 변경</span>
+              <more-horizontal-icon v-else size="20"></more-horizontal-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="(menu, index) in statusMenus"
+              :key="index"
+            >
+              <v-list-item-title>{{ menu.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
     </div>
 
     <v-data-table
