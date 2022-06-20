@@ -63,7 +63,32 @@ const routes = [
         path: '/settings/center-list',
         name: 'CenterList',
         component: () => import('@/views/Settings/CenterList.vue')
-      }
+      },
+      {
+        path: '/settings/center-form/:id',
+        name: 'CenterForm',
+        component: () => import('@/views/Settings/CenterForm.vue')
+      },
+      {
+        path: '/settings/hospital-list',
+        name: 'HospitalList',
+        component: () => import('@/views/Settings/HospitalList.vue')
+      },
+      {
+        path: '/settings/hospital-form/:id',
+        name: 'HospitalForm',
+        component: () => import('@/views/Settings/HospitalForm.vue')
+      },
+      {
+        path: '/settings/user-list',
+        name: 'UserList',
+        component: () => import('@/views/Settings/UserList.vue')
+      },
+      {
+        path: '/settings/user-Form/:id',
+        name: 'UserForm',
+        component: () => import('@/views/Settings/UserForm.vue')
+      },
     ]
   },
   {
@@ -74,7 +99,7 @@ const routes = [
       {
         path: '',
         name: 'MyAccount',
-        component: () => import('@/views/User/MyAccount.vue')
+        component: () => import('@/views/Account/MyAccount.vue')
       }
     ]
   }

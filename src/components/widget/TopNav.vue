@@ -13,13 +13,15 @@
         <v-tab to="/form/inbox">작성 목록</v-tab>
         <v-tab to="/form/outbox">의뢰 목록</v-tab>
         <v-menu
+          open-on-hover
           offset-y
           class="rounded-2">
           <template v-slot:activator="{ on, attrs }">
             <v-tab
-              append-path
               v-bind="attrs"
-              v-on="on">
+              v-on="on"
+              to="/settings"
+              @click="replace">
               등록 관리
             </v-tab>
           </template>
@@ -66,8 +68,8 @@ export default {
     return {
       menus: [
         { title: '직업병 안심센터 등록관리', router: '/settings/center-list' },
-        { title: '협력병원 등록관리', router: '/settings/center-list' },
-        { title: '의료진 등록관리', router: '/settings/center-list' }
+        { title: '협력병원 등록관리', router: '/settings/hospital-list' },
+        { title: '의료진 등록관리', router: '/settings/user-list' }
       ]
     }
   },
@@ -75,9 +77,10 @@ export default {
     doLogout() {
       this.$router.replace('/')
     },
-    stopLink(ev) {
-      // ev.defaultPrevented();
-      console.log(ev)
+    replace() {
+      // 클릭시 이동하지 않도록..
+      // this.$router.replace(this.menus[0].router)
+      this.$router.back();
     }
   }
 }

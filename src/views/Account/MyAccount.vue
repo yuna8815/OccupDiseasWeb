@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import PersonalInfo from '@/views/User/PersonalInfo'
-import ChangePw from '@/views/User/ChangePw'
+import PersonalInfo from '@/views/Account/PersonalInfo'
+import ChangePw from '@/views/Account/ChangePw'
 
 export default {
   components: {

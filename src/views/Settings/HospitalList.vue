@@ -1,7 +1,16 @@
 <template>
   <v-container class="py-8">
     <div class="d-sm-flex justify-space-between align-center pb-8">
-      <h1 class="text-h5 mb-4 mb-sm-0">직업병 안심센터 관리</h1>
+      <div class="d-flex align-center">
+        <h1 class="text-h5 mb-4 mb-sm-0">협력병원 관리</h1>
+        <!-- 시스템관리자만 노출 -->
+        <!-- <v-select
+          outlined
+          value="직업병 안심센터 A"
+          :items="centerLists"
+          hide-details
+          class="ml-4 white" /> -->
+      </div>
 
       <div class="d-flex d-sm-block justify-end">
         <v-btn
@@ -10,7 +19,7 @@
           outlined
           color="primary"
           class="mr-4"
-          @click="doEdit('/settings/center-form', -1)">
+          @click="doEdit('/settings/hospital-form', -1)">
           <span v-if="!$vuetify.breakpoint.xs">신규 등록</span>
           <edit-2-icon v-else size="20"></edit-2-icon>
         </v-btn>
@@ -47,7 +56,7 @@
           icon
           small
           class="mx-2 text--text text--lighten-1"
-          @click="doEdit('/settings/center-form', item.id)">
+          @click="doEdit('/settings/hospital-form', item.id)">
           <edit-2-icon size="20"></edit-2-icon>
         </v-btn>
       </template>
@@ -72,6 +81,8 @@ export default {
     return {
       confirmModalParams: { isOpened: false, title: '', message: '', callback: null},
 
+      centerLists: ['직업병 안심센터 A', '직업병 안심센터 B', '직업병 안심센터 C'],
+
       selectedRows: [],
       footerProps: {
         'items-per-page-text': '리스트 개수 :',
@@ -81,8 +92,8 @@ export default {
       headers: [
         { text: '기관명', value: 'ORG_NAME' },
         { text: '기관 주소', value: 'ORG_ADDR' },
-        { text: '관리자', value: 'ADMIN' },
-        { text: '관리자 연락처', value: 'PHONE' },
+        { text: '담당자', value: 'ADMIN' },
+        { text: '담당자 연락처', value: 'PHONE' },
         { text: '', value: 'ROWS_MENU', sortable: false, align: 'end', width: '135' }
       ],
       items: [

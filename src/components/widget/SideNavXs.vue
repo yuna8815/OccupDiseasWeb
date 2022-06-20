@@ -93,8 +93,8 @@ export default {
     return {
       items: [
         { title: '직업병 안심센터 관리', router: '/settings/center-list' },
-        { title: '협력병원 관리', router: '/settings/center-list' },
-        { title: '의료진 관리', router: '/settings/center-list' },
+        { title: '협력병원 관리', router: '/settings/hospital-list' },
+        { title: '의료진 관리', router: '/settings/user-list' },
       ],
     }
   }

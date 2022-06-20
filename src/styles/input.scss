@@ -2,7 +2,7 @@
 .v-text-field--outlined.v-input--has-state fieldset {
   border-width: 1px !important;
 }
-.v-text-field--outlined > .v-input__control > .v-input__slot {
+.v-text-field--outlined:not(.white) > .v-input__control > .v-input__slot {
   background: var(--v-gray-base) !important;
 }
 .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {

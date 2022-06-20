@@ -72,7 +72,7 @@
     <v-data-table
       v-model="selectedRows"
       :headers="headers"
-      :items="desserts"
+      :items="items"
       show-select
       checkbox-color="primary"
       no-data-text="“새로 작성하기”를 클릭하여 서식을 작성해 주세요"
@@ -204,7 +204,7 @@ export default {
         { text: '상태', value: 'STATE' },
         { text: '', value: 'ROWS_MENU', sortable: false, align: 'end', width: '135' },
       ],
-      desserts: [
+      items: [
         {
           id: 0,
           FILE_NAME: '직업병 의심 사례 협진 의뢰',
